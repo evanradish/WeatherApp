@@ -4,7 +4,9 @@
     tools:context="com.radish.evan.weatherapp.DetailActivity">
     <item
         android:id="@+id/action_settings"
-        android:orderInCategory="100"
+        android:orderInCategory="1"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+
+
 </menu>
