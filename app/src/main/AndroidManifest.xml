@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -37,6 +39,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.radish.evan.weatherapp.MainActivity" />
         </activity>
+        <provider
+            android:name=".data.WeatherProvider"
+            android:authorities="com.radish.evan.weatherapp"/>
     </application>
 
 </manifest>
