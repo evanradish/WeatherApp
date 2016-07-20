@@ -8,6 +8,7 @@ import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 public class DetailActivity extends AppCompatActivity {
@@ -21,14 +22,6 @@ public class DetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
@@ -43,16 +36,16 @@ public class DetailActivity extends AppCompatActivity {
         MenuItem menuItem = menu.findItem(R.id.action_share);
 
         // Get the provider and hold onto it to set/change the share intent.
-        ShareActionProvider mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
+        DetailActivityFragment.mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
 
 
         // Attach an intent to this ShareActionProvider.  You can update this at any time,
         // like when the user selects a new piece of data they might like to share.
-        if (mShareActionProvider != null ) {
+        if (DetailActivityFragment.mShareActionProvider != null ) {
             DetailActivityFragment detailActivityFragment = new DetailActivityFragment();
-            mShareActionProvider.setShareIntent(detailActivityFragment.createShareForecastIntent());
+            DetailActivityFragment.mShareActionProvider.setShareIntent(detailActivityFragment.createShareForecastIntent());
         } else {
-            Log.d(DetailActivity.class.getSimpleName(), "INTO share Provider--"+mShareActionProvider.toString());
+            Log.d(DetailActivity.class.getSimpleName(), "INTO share Provider--"+DetailActivityFragment.mShareActionProvider.toString());
             Log.d(LOG_TAG, "Share Action Provider is null?");
         }
         return true;
